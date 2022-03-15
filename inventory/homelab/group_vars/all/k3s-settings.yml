@@ -5,9 +5,7 @@
 
 # Use a specific version of k3s
 # k3s_release_version: "v1.19"
-# k3s_release_version: "48ed47c4a3e420fa71c18b2ec97f13dc0659778b"
-# k3s_release_version: "c3c983198f4c8c7480c486032ac7a70b267f69da"
-k3s_release_version: "43cb200fd0540b416ddec1216e371d41be2dadf2"
+# k3s_release_version: "43cb200fd0540b416ddec1216e371d41be2dadf2"
 
 # Install using hard links rather than symbolic links.
 # ...if you are using the system-upgrade-controller you will need to use hard links rather than symbolic links as the controller will not be able to follow symbolic links.
@@ -28,6 +26,7 @@ k3s_flannel_backend: "none"
 k3s_control_node_address: "{{ 'k8s-master-vip' if keepalived.enabled is defined and keepalived.enabled else groups['master'][0] }}"
 
 k3s_become_for_all: true
+k3s_become: true
 
 # Network CIDR to use for pod IPs
 # k3s_cluster_cidr: "10.90.0.0/16"
