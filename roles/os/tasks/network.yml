@@ -23,27 +23,6 @@
   when:
   - disable_ipv6 is not defined or not disable_ipv6
 
-- name: network | modules | unload ipv6
-  become: true
-  community.general.modprobe:
-    name: "{{ item }}"
-    state: absent
-  loop:
-  - ipv6
-  when:
-  - disable_ipv6 is defined
-  - disable_ipv6
-
-- name: network | modules | load ipv6
-  become: true
-  community.general.modprobe:
-    name: "{{ item }}"
-    state: present
-  loop:
-  - ipv6
-  when:
-  - disable_ipv6 is not defined or not disable_ipv6
-
 - name: network | modules | blacklist ipv6
   become: true
   copy:
