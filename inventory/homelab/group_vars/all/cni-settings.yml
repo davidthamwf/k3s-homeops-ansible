@@ -23,7 +23,7 @@ cilium_kube_router:
   enabled: true
   cilium:
     registry: docker.io/cilium
-    version: latest
+    version: 1.11.2
     # Specify the CIDR for native routing
     # usually the network CIDR that your master and worker nodes are on
     # https://docs.cilium.io/en/v1.8/concepts/networking/routing/
@@ -34,7 +34,7 @@ cilium_kube_router:
   # BGP settings for kube-router
   kube_router:
     registry: docker.io/cloudnativelabs/kube-router
-    version: latest
+    version: 1.4.0
     # peerRouterIP is usually your router e.g. 192.168.1.1
     peerRouterIP: 192.168.10.1
     peerRouterASNS: 64512
