@@ -51,32 +51,6 @@
   - packages.deb.htop_version is defined
   - packages.deb.htop_version
 
-- name: packages | check if snap is installed
-  debug:
-    msg: "snapd is installed"
-  register: snapd_check
-  when:
-  - "'snapd' in ansible_facts.packages"
-  - packages.remove is defined
-  - packages.remove is iterable
-  - packages.remove | length > 0
-  - "'snapd' in packages.remove"
-
-- name: packages | remove snap packages
-  become: true
-  command: snap remove {{ item }}
-  loop:
-  - lxd
-  - core18
-  - snapd
-  when:
-  - ansible_distribution == 'Ubuntu'
-  - snapd_check.failed is defined
-  - packages.remove is defined
-  - packages.remove is iterable
-  - packages.remove | length > 0
-  - "'snapd' in packages.remove"
-
 - name: packages | remove packages
   become: true
   apt:
