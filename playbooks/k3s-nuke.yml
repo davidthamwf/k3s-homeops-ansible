@@ -4,18 +4,7 @@
   - worker
   become: true
   gather_facts: true
-  vars_prompt:
-    name: "run_confirmation"
-    prompt: "This will DESTROY your cluster. Do you wish to continue? [Y/n]"
-    default: "n"
-    private: no
   any_errors_fatal: yes
-  
-  pre_tasks:
-  - name: cluster-nuke | check confirmation
-    fail:
-      msg: "Abort."
-    when: run_confirmation != "Y"
   
   tasks:
   - name: cluster-nuke | kill k3s
