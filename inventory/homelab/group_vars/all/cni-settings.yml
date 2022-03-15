@@ -7,7 +7,7 @@ calico:
   bgp:
     enabled: false
     # peer is usually your router e.g. 192.168.1.1
-    peer: 192.168.42.1
+    peer: 192.168.10.1
     as: 64512
     # externalIPs is the network you want services to consume
     # this network should not exist or be defined anywhere in your network
@@ -23,19 +23,19 @@ cilium_kube_router:
   enabled: true
   cilium:
     registry: docker.io/cilium
-    version: 1.9.0-rc0
+    version: latest
     # Specify the CIDR for native routing
     # usually the network CIDR that your master and worker nodes are on
     # https://docs.cilium.io/en/v1.8/concepts/networking/routing/
-    nativeRoutingCIDR: 192.168.42.0/24
+    nativeRoutingCIDR: 192.168.10.0/24
     # Use the embedded ectd from k3s for the kvstore
     # https://docs.cilium.io/en/v1.8/gettingstarted/k8s-install-external-etcd
     etcd: true
   # BGP settings for kube-router
   kube_router:
     registry: docker.io/cloudnativelabs/kube-router
-    version: 1.1.0
+    version: latest
     # peerRouterIP is usually your router e.g. 192.168.1.1
-    peerRouterIP: 192.168.42.1
+    peerRouterIP: 192.168.10.1
     peerRouterASNS: 64512
     clusterASN: 64512
