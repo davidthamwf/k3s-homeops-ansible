@@ -1,9 +1,5 @@
 ---
 
-- include: kubeconfig.yml
-  tags:
-  - kubeconfig
-
 - include: meta.yml
   tags:
   - meta
