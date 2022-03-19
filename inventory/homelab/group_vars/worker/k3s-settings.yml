@@ -9,4 +9,7 @@ k3s_agent:
   with-node-id: true
   node-label:
     - "is-worker=true"
-  data-dir: "/data/rancher/k3s"
+  flannel-backend: "none"  # This needs to be in quotes
+  data-dir: "/data/rancher/k3s" # Move the states and object storage to a second disk '/data'
+  kubelet-arg: 
+    - feature-gates: "ExternalPolicyForExternalIP=true"
