@@ -3,9 +3,6 @@
 # ...see https://github.com/PyratLabs/ansible-role-k3s#group-variables
 #
 
-# Define the host as a control plane node
-k3s_control_node: true
-
 # k3s_server install options
 k3s_server:
   cluster-cidr: "10.69.0.0/16"
