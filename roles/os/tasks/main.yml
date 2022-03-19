@@ -31,6 +31,10 @@
 - include: filesystem.yml
   tags:
   - filesystem
+  
+- include: disable-multipath.yml
+  tags:
+  - disable-multipath
 
 - include: unattended-upgrades.yml
   tags:
