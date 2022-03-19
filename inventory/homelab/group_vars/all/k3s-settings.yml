@@ -3,6 +3,18 @@
 # ...see https://github.com/PyratLabs/ansible-role-k3s#group-variables
 #
 
+# Do not deploy the following
+k3s_no_traefik: true
+k3s_no_servicelb: true
+k3s_no_metrics_server: true
+k3s_no_flannel: true
+k3s_no_local_storage: true
+k3s_flannel_backend: "none"
+
+# IP range for k3s nodes and services
+k3s_cluster_cidr: "10.69.0.0/16"
+k3s_service_cidr: "10.96.0.0/16"
+
 # k3s_server install options
 k3s_server:
   cluster-cidr: "10.69.0.0/16"
@@ -31,6 +43,7 @@ k3s_install_hard_links: true
 # ...k8s-master-vip is defined in /etc/hosts of all nodes if you are using keepalived
 k3s_control_node_address: "{{ 'k8s-master-vip' if keepalived.enabled is defined and keepalived.enabled else groups['master'][0] }}"
 
+# Elevate privileges while installing
 k3s_become_for_all: true
 k3s_become: true
 
