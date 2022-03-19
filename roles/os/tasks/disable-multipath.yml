@@ -15,7 +15,10 @@
   copy:
     content: |
       blacklist {
-        devnode "^sd[a-z0-9]+"
+        device {
+          vendor "VMware"
+          product "Virtual disk"
+        }
       }
     dest: /etc/multipath/conf.d/ubuntu-20-on-vmware.conf
 
