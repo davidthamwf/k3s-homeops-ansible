@@ -11,5 +11,3 @@ k3s_agent:
     - "is-worker=true"
   flannel-backend: "none"  # This needs to be in quotes
   data-dir: "/data/rancher/k3s" # Move the states and object storage to a second disk '/data'
-  kubelet-arg: 
-    - feature-gates: "ExternalPolicyForExternalIP=true"
