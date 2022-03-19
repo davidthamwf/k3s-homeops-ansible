@@ -1,4 +1,15 @@
 ---
+# Generate a runtime config dictionary
+k3s_runtime_config: "{{
+  (k3s_control_node is defined and k3s_control_node)
+  | ternary(
+      (k3s_server | default({})) | combine (k3s_agent | default({})),
+      (k3s_agent | default({})),
+      (k3s_server | default({})) | combine (k3s_agent | default({})))
+}}"
+
+# Data directory location for k3s
+k3s_data_dir: "{{ k3s_runtime_config['data-dir'] | default('/var/lib/rancher/k3s') }}"
 
 # Prometheus Operator version from:
 # https://github.com/prometheus-operator/prometheus-operator/releases
