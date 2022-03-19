@@ -3,21 +3,28 @@
 # ...see https://github.com/PyratLabs/ansible-role-k3s#group-variables
 #
 
-# Use a specific version of k3s
-# k3s_release_version: "v1.19"
-# k3s_release_version: "43cb200fd0540b416ddec1216e371d41be2dadf2"
+# Define the host as a control plane node
+k3s_control_node: true
 
-# Install using hard links rather than symbolic links.
-# ...if you are using the system-upgrade-controller you will need to use hard links rather than symbolic links as the controller will not be able to follow symbolic links.
+# k3s_server install options
+k3s_server:
+  cluster-cidr: "10.69.0.0/16"
+  service_cidr: "10.96.0.0/16"
+  cluster-domain: "k3s.corp"
+  flannel-backend: 'none'  # This needs to be in quotes
+  disable:
+    - traefik
+    - coredns
+    - servicelb
+  tls-san:
+    - "{{ keepalived.vip }}"
+    - "k8s-master-vip"
+  debug: true
+  disable-cloud-controller: true
+  disable-kube-proxy: true
+  
+
 k3s_install_hard_links: true
-
-# Do not deploy the following
-k3s_no_traefik: true
-k3s_no_servicelb: true
-k3s_no_metrics_server: true
-k3s_no_flannel: true
-k3s_no_local_storage: true
-k3s_flannel_backend: "none"
 
 # k3s_default_local_storage_path: "/dev/shm/k8s"
 
@@ -27,14 +34,6 @@ k3s_control_node_address: "{{ 'k8s-master-vip' if keepalived.enabled is defined 
 
 k3s_become_for_all: true
 k3s_become: true
-
-# Network CIDR to use for pod IPs
-# k3s_cluster_cidr: "10.90.0.0/16"
-k3s_cluster_cidr: "10.69.0.0/16"
-
-# Network CIDR to use for service IPs
-# k3s_service_cidr: "10.96.0.0/16"
-k3s_service_cidr: "10.96.0.0/16"
 
 # Disable kube-proxy
 k3s_disable_kube_proxy: "{{ true if ((cilium_kube_router.enabled is defined and cilium_kube_router.enabled) or (calico.ebpf.enabled is defined and calico.ebpf.enabled)) else false }}"
@@ -57,3 +56,11 @@ k3s_kubelet_args:
 
 # Enable debugging
 k3s_debug: true
+
+# Add additional hosname or IP as Subject Alternate Name in the TLS cert
+k3s_tls_san:
+- "{{ keepalived.vip }}"
+- "k8s-master-vip"
+
+# Use embedded etcd
+k3s_etcd_datastore: true
