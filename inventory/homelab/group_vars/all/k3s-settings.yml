@@ -29,12 +29,9 @@ k3s_server:
   tls-san:
     - "{{ keepalived.vip }}"
     - "k8s-master-vip"
-  kubelet-arg: 
-    - feature-gates: "ExternalPolicyForExternalIP=true"
   debug: true
   disable-cloud-controller: true
 # disable-kube-proxy: true
-  
 
 k3s_install_hard_links: true
 
