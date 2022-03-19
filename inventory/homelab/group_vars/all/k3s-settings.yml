@@ -11,7 +11,7 @@ k3s_server:
   cluster-cidr: "10.69.0.0/16"
   service_cidr: "10.96.0.0/16"
   cluster-domain: "k3s.corp"
-  flannel-backend: 'none'  # This needs to be in quotes
+  flannel-backend: "none"  # This needs to be in quotes
   disable:
     - traefik
     - coredns
@@ -19,6 +19,8 @@ k3s_server:
   tls-san:
     - "{{ keepalived.vip }}"
     - "k8s-master-vip"
+  kubelet-arg: 
+    - feature-gates: "ExternalPolicyForExternalIP=true"
   debug: true
   disable-cloud-controller: true
   disable-kube-proxy: true
