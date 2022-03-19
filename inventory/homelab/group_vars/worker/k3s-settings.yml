@@ -6,7 +6,6 @@
 # Define the host as a control plane node
 k3s_control_node: false
 k3s_agent:
-  with-node-id: true
   node-label:
     - "is-worker=true"
 # flannel-backend: "none"  # This needs to be in quotes
