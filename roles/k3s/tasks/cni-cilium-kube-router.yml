@@ -3,7 +3,8 @@
 - name: cluster | cilium | load etcd ca file
   become: true
   slurp:
-    src: "/var/lib/rancher/k3s/server/tls/etcd/server-ca.crt"
+  # src: "/var/lib/rancher/k3s/server/tls/etcd/server-ca.crt"
+    src: "{{ k3s_data_dir }}/server/tls/etcd/server-ca.crt"
   register: slurped_etcd_ca_file
   when:
   - cilium_kube_router.cilium.etcd is defined
@@ -12,7 +13,8 @@
 - name: cluster | cilium | load etcd cert file
   become: true
   slurp:
-    src: "/var/lib/rancher/k3s/server/tls/etcd/server-client.crt"
+  # src: "/var/lib/rancher/k3s/server/tls/etcd/server-client.crt"
+    src: "{{ k3s_data_dir }}/server/tls/etcd/server-client.crt"
   register: slurped_etcd_cert_file
   when:
   - cilium_kube_router.cilium.etcd is defined
@@ -21,7 +23,8 @@
 - name: cluster | cilium | load etcd cert key file
   become: true
   slurp:
-    src: "/var/lib/rancher/k3s/server/tls/etcd/server-client.key"
+  # src: "/var/lib/rancher/k3s/server/tls/etcd/server-client.key"
+    src: "{{ k3s_data_dir }}/server/tls/etcd/server-client.key"
   register: slurped_etcd_cert_key_file
   when:
   - cilium_kube_router.cilium.etcd is defined
