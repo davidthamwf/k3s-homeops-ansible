@@ -54,8 +54,8 @@ k3s_disable_cloud_controller: true
 # Disable k3s default network policy controller.
 # kube-router has it's own network-policy controller (or so it seems)
 # https://github.com/rancher/k3s/issues/1308
-# k3s_disable_network_policy: "{{ true if cilium_kube_router.enabled is defined and cilium_kube_router.enabled else false }}"
-k3s_disable_network_policy: false
+k3s_disable_network_policy: "{{ true if cilium_kube_router.enabled is defined and cilium_kube_router.enabled else false }}"
+# k3s_disable_network_policy: false
 
 # Use experimental features (spooky!)
 k3s_use_experimental: true
