@@ -13,7 +13,7 @@ k3s_data_dir: "{{ k3s_runtime_config['data-dir'] | default('/var/lib/rancher/k3s
 
 # Prometheus Operator version from:
 # https://github.com/prometheus-operator/prometheus-operator/releases
-prometheus_operator_version: "0.42"
+prometheus_operator_version: "0.55"
 
 # URLs to the  Prometheus Operator CRDs
 prometheus_operator_crds:
