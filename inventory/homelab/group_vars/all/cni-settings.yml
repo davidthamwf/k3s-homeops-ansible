@@ -37,5 +37,5 @@ cilium_kube_router:
     version: 1.4.0
     # peerRouterIP is usually your router e.g. 192.168.1.1
     peerRouterIP: 192.168.10.1
-    peerRouterASNS: 64512
+    peerRouterASNS: 65000
     clusterASN: 64512
