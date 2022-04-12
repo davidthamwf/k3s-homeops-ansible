@@ -30,6 +30,7 @@ k3s_server:
     - "k8s-master-vip"
   debug: true
   disable-cloud-controller: true
+  disable-network-policy: true
 # disable-kube-proxy: true
 
 k3s_install_hard_links: true
