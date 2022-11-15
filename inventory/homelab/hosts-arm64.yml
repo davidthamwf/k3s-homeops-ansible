@@ -1,0 +1,13 @@
+all:
+  children:
+    # Master group, do not change the 'master' name
+    # hosts should match the filenames in 'host_vars'
+    master:
+      hosts:
+        rock5-k3s-worker-01:
+    # Worker group, do not change the 'worker' name
+    # hosts should match the filenames in 'host_vars'
+    worker:
+      hosts:
+        rock5-k3s-worker-02:
+        rock5-k3s-worker-03:
