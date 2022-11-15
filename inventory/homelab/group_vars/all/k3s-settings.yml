@@ -27,7 +27,7 @@ k3s_server:
     - servicelb
   tls-san:
     - "{{ keepalived.vip }}"
-    - "k8s-master-vip"
+    - "k3s-master-vip"
   debug: true
   disable-cloud-controller: true
   disable-network-policy: true
@@ -39,7 +39,7 @@ k3s_install_hard_links: true
 
 # Use a specific control node address. IP or FQDN.
 # ...k8s-master-vip is defined in /etc/hosts of all nodes if you are using keepalived
-k3s_control_node_address: "{{ 'k8s-master-vip' if keepalived.enabled is defined and keepalived.enabled else groups['master'][0] }}"
+k3s_control_node_address: "{{ 'k3s-master-vip' if keepalived.enabled is defined and keepalived.enabled else groups['master'][0] }}"
 
 # Elevate privileges while installing
 k3s_become_for_all: true
@@ -70,7 +70,7 @@ k3s_debug: true
 # Add additional hosname or IP as Subject Alternate Name in the TLS cert
 k3s_tls_san:
 - "{{ keepalived.vip }}"
-- "k8s-master-vip"
+- "k3s-master-vip"
 
 # Use embedded etcd
 k3s_etcd_datastore: true
