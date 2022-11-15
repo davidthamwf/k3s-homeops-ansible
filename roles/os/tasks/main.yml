@@ -16,9 +16,9 @@
   tags:
   - power-button
 
-- include: motd.yml
-  tags:
-  - motd
+# - include: motd.yml
+#   tags:
+#   - motd
 
 - include: kernel.yml
   tags:
