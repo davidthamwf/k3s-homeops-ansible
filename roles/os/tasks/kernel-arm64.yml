@@ -19,7 +19,6 @@
   loop:
   - br_netfilter
   - overlay
-  - rbd
   - ip_vs
 
 # Blacklist for PiAware: https://hub.docker.com/r/mikenye/piaware
