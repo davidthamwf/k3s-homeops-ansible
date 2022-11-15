@@ -25,7 +25,8 @@
   tags:
   - kernel
 
-- include: network.yml
+# - include: network.yml
+- include: network-arm64.yml
   tags:
   - network
 
