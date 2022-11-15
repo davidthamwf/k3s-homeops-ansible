@@ -8,7 +8,6 @@
   loop:
   - br_netfilter
   - overlay
-  - rbd
   - ip_vs
 
 - name: kernel | enable modules on boot
