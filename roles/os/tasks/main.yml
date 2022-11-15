@@ -20,7 +20,8 @@
 #   tags:
 #   - motd
 
-- include: kernel.yml
+# - include: kernel.yml
+- include: kernel-arm64.yml
   tags:
   - kernel
 
