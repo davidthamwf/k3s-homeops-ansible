@@ -3,7 +3,7 @@
 - name: time | set timezone
   become: true
   community.general.timezone:
-    name: "{{ timezone | default('America/New_York') }}"
+    name: "{{ timezone | default('Asia/Singapore') }}"
   notify: systemd-timesyncd configuration changed
 
 - name: time | copy timesyncd config
