@@ -2,5 +2,5 @@
 # ...only enabled if you are using HA masters
 keepalived:
   enabled: true
-  vip: "192.168.10.120"
+  vip: "192.168.10.99"
   interface: "{{ ansible_default_ipv4['interface'] }}"
