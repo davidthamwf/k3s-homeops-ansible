@@ -9,6 +9,8 @@
   - time
 
 - include: packages.yml
+  when:
+  - ansible_os_family == "Debian"
   tags:
   - packages
 
