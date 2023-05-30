@@ -4,9 +4,9 @@
   tags:
   - host
 
-# - include: time.yml
-#   tags:
-#   - time
+- include: time.yml
+  tags:
+  - time
 
 - include: packages.yml
   tags:
@@ -16,12 +16,12 @@
   tags:
   - power-button
 
-# - include: motd.yml
-#   tags:
-#   - motd
+- include: motd.yml
+  tags:
+  - motd
 
-# - include: kernel.yml
-- include: kernel-arm64.yml
+- include: kernel.yml
+# - include: kernel-arm64.yml
   tags:
   - kernel
 
@@ -34,9 +34,9 @@
   tags:
   - filesystem
   
-# - include: disable-multipath.yml
-#   tags:
-#   - disable-multipath
+- include: disable-multipath.yml
+  tags:
+  - disable-multipath
 
 - include: unattended-upgrades.yml
   tags:
