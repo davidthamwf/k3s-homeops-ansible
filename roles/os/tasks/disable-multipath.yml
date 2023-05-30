@@ -20,7 +20,7 @@
           product "Virtual disk"
         }
       }
-    dest: /etc/multipath/conf.d/ubuntu-20-on-vmware.conf
+    dest: /etc/multipath/conf.d/rule-20-on-vmware.conf
 
 - name: multipath | restart systemd service
   systemd:
