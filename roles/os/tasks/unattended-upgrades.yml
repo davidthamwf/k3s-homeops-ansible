@@ -5,6 +5,7 @@
   file:
     path: /etc/apt/apt.conf.d/20auto-upgrades
     state: absent
+  when: ansible_os_family == "Debian"
 
 - name: unattended-upgrades | copy 10periodic config
   become: true
@@ -16,6 +17,7 @@
       APT::Periodic::Unattended-Upgrade "1";
     dest: /etc/apt/apt.conf.d/10periodic
   notify: unattended-upgrades configuration changed
+  when: ansible_os_family == "Debian"
 
 - name: unattended-upgrades | copy 50unattended-upgrades config
   become: true
@@ -29,6 +31,7 @@
       };
     dest: /etc/apt/apt.conf.d/50unattended-upgrades
   notify: unattended-upgrades configuration changed
+  when: ansible_os_family == "Debian"
 
 - name: unattended-upgrades | start systemd service
   become: true
@@ -36,3 +39,4 @@
     name: unattended-upgrades
     enabled: true
     state: started
+  when: ansible_os_family == "Debian"
