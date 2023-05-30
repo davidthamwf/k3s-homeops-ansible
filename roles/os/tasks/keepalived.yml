@@ -1,6 +1,6 @@
 ---
 
-- name: keepalived | install package
+- name: keepalived | install package for Debian based distro
   become: true
   apt:
     name: keepalived
@@ -16,6 +16,36 @@
   - k3s_control_node 
   - keepalived.enabled is defined
   - keepalived.enabled
+  - ansible_os_family == "Debian"
+  
+- name: keepalived | install package for Redhat based distro
+  ansible.builtin.package:
+    name: keepalived
+    state: present
+  register: yum_install_keepalived
+  retries: 5
+  until: yum_install_keepalived is success
+  when:
+  - k3s_control_node is defined
+  - k3s_control_node 
+  - keepalived.enabled is defined
+  - keepalived.enabled
+  - ansible_os_family == "Redhat"
+  
+- name: keepalived | install package for Vmware Photon OS
+  ansible.builtin.package:
+    name: keepalived
+    state: present
+    use: tdnf
+  register: tdnf_install_keepalived
+  retries: 5
+  until: tdnf_install_keepalived is success
+  when:
+  - k3s_control_node is defined
+  - k3s_control_node 
+  - keepalived.enabled is defined
+  - keepalived.enabled
+  - ansible_os_family == "VMware Photon OS"
 
 - name: keepalived | copy configuration
   become: true
